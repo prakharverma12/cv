@@ -10,13 +10,22 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* LaTeX-style résumé (screen + print) */
+        /* LaTeX-style résumé (screen + print) — aesthetic tokens */
         .latex-resume {
+            --cv-ink: #141414;
+            --cv-muted: #3a3a3a;
+            --cv-faint: #5c5c5c;
+            --cv-rule: #252525;
             font-family: "EB Garamond", "Georgia", "Times New Roman", serif;
             font-size: 11.25px;
-            line-height: 1.28;
-            color: #000;
+            line-height: 1.3;
+            color: var(--cv-ink);
             -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+        .latex-resume strong {
+            font-weight: 600;
+            color: var(--cv-ink);
         }
         @media (min-width: 640px) {
             .latex-resume { font-size: 12.25px; }
@@ -33,6 +42,7 @@
         .latex-resume .contact-line {
             font-size: 0.95em;
             font-weight: 500;
+            color: var(--cv-muted);
         }
         .latex-resume .contact-line a {
             color: inherit;
@@ -42,13 +52,14 @@
             text-decoration: underline;
         }
         .latex-resume .sec-title {
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: 700;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin: 0.85rem 0 0.45rem;
-            padding-bottom: 0.2rem;
-            border-bottom: 0.5pt solid #000;
+            margin: 0.85rem 0 0.5rem;
+            padding-bottom: 0.22rem;
+            border-bottom: 0.65pt solid var(--cv-rule);
+            color: var(--cv-ink);
         }
         .latex-resume .sec-title:first-of-type {
             margin-top: 0.35rem;
@@ -68,33 +79,46 @@
         }
         .latex-resume .cv-right {
             flex: 0 0 auto;
-            font-weight: 500;
-            font-size: 0.95em;
+            font-weight: 600;
+            font-size: 0.92em;
             text-align: right;
             white-space: nowrap;
+            color: var(--cv-muted);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.02em;
         }
         .latex-resume ul.cv-list {
-            margin: 0.28rem 0 0;
-            padding-left: 1.15rem;
+            margin: 0.32rem 0 0;
+            padding-left: 1.1rem;
             list-style-type: disc;
         }
+        .latex-resume ul.cv-list li::marker {
+            color: var(--cv-faint);
+            font-size: 0.85em;
+        }
         .latex-resume ul.cv-list li {
-            margin: 0.12rem 0;
-            padding-left: 0.2rem;
+            margin: 0.14rem 0;
+            padding-left: 0.25rem;
         }
         .latex-resume ul.cv-list.tight li { margin: 0.08rem 0; }
         .latex-resume .lbl { font-weight: 700; }
         .latex-resume em.org, .latex-resume i.org {
             font-style: italic;
             font-weight: 400;
+            color: var(--cv-muted);
         }
-        .latex-resume .pub-title { font-weight: 600; }
+        .latex-resume .pub-title {
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
         .latex-resume .block-spaced { margin-bottom: 0.55rem; }
         .latex-resume .block-spaced-sm { margin-bottom: 0.4rem; }
         .latex-resume .pub-body {
-            margin-top: 0.15rem;
-            text-align: justify;
+            margin-top: 0.2rem;
+            text-align: left;
             hyphens: none;
+            line-height: 1.34;
+            color: var(--cv-ink);
         }
 
         @media print {
@@ -165,9 +189,15 @@
             }
             .latex-resume .pub-body {
                 margin-top: 0.08rem !important;
-                line-height: 1.15;
+                line-height: 1.22;
             }
-            .latex-resume a { color: #000 !important; text-decoration: none !important; }
+            .latex-resume strong {
+                font-weight: 600;
+            }
+            .latex-resume a {
+                color: var(--cv-ink) !important;
+                text-decoration: none !important;
+            }
             /* Let content flow; hard avoids push blocks to page 2 */
             .avoid-break,
             .allow-break {
@@ -202,7 +232,7 @@
             </p>
         </section>
 
-        <article id="resume" class="latex-resume bg-white text-black mx-auto px-5 sm:px-8 py-7 sm:py-8 shadow-sm border border-stone-200/80 sm:rounded-sm print:shadow-none print:border-0">
+        <article id="resume" class="latex-resume bg-white mx-auto px-5 sm:px-8 py-7 sm:py-8 border border-stone-200/60 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)] sm:rounded-sm print:shadow-none print:border-0">
             <header class="text-center mb-1">
                 <h1 class="name">Prakhar Verma</h1>
                 <p class="contact-line mt-2 print:mt-0">
