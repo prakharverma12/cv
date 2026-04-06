@@ -18,7 +18,7 @@
             --cv-rule: #252525;
             font-family: "EB Garamond", "Georgia", "Times New Roman", serif;
             font-size: 11.25px;
-            line-height: 1.3;
+            line-height: 1.32;
             color: var(--cv-ink);
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
@@ -56,13 +56,13 @@
             font-weight: 700;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin: 0.85rem 0 0.5rem;
-            padding-bottom: 0.22rem;
+            margin: 0.95rem 0 0.55rem;
+            padding-bottom: 0.24rem;
             border-bottom: 0.65pt solid var(--cv-rule);
             color: var(--cv-ink);
         }
         .latex-resume .sec-title:first-of-type {
-            margin-top: 0.35rem;
+            margin-top: 0.4rem;
         }
         .latex-resume .cv-row {
             display: flex;
@@ -88,7 +88,7 @@
             letter-spacing: 0.02em;
         }
         .latex-resume ul.cv-list {
-            margin: 0.32rem 0 0;
+            margin: 0.38rem 0 0.12rem;
             padding-left: 1.1rem;
             list-style-type: disc;
         }
@@ -97,10 +97,10 @@
             font-size: 0.85em;
         }
         .latex-resume ul.cv-list li {
-            margin: 0.14rem 0;
+            margin: 0.18rem 0;
             padding-left: 0.25rem;
         }
-        .latex-resume ul.cv-list.tight li { margin: 0.08rem 0; }
+        .latex-resume ul.cv-list.tight li { margin: 0.12rem 0; }
         .latex-resume .lbl { font-weight: 700; }
         .latex-resume em.org, .latex-resume i.org {
             font-style: italic;
@@ -111,13 +111,13 @@
             font-weight: 700;
             letter-spacing: 0.01em;
         }
-        .latex-resume .block-spaced { margin-bottom: 0.55rem; }
-        .latex-resume .block-spaced-sm { margin-bottom: 0.4rem; }
+        .latex-resume .block-spaced { margin-bottom: 0.62rem; }
+        .latex-resume .block-spaced-sm { margin-bottom: 0.46rem; }
         .latex-resume .pub-body {
-            margin-top: 0.2rem;
+            margin-top: 0.22rem;
             text-align: left;
             hyphens: none;
-            line-height: 1.34;
+            line-height: 1.38;
             color: var(--cv-ink);
         }
 
@@ -129,8 +129,8 @@
             }
             @page {
                 size: A4;
-                /* Tighter bottom so less empty sheet below last line */
-                margin: 7mm 10mm 4mm 10mm;
+                /* Symmetric margins — closer to classic CV / LaTeX PDF */
+                margin: 10mm 11mm 10mm 11mm;
             }
             body {
                 background: #fff !important;
@@ -139,9 +139,8 @@
             }
             main { padding: 0 !important; max-width: none !important; }
             .latex-resume {
-                /* Slightly larger type + leading fills vertical space without huge footer gap */
-                font-size: 9.55pt;
-                line-height: 1.2;
+                font-size: 9.65pt;
+                line-height: 1.24;
                 max-width: none !important;
                 padding: 0 !important;
                 margin-bottom: 0 !important;
@@ -151,52 +150,58 @@
             }
             .latex-resume .name {
                 font-size: 14pt;
-                line-height: 1.1;
-                margin: 0 0 0.1rem;
+                line-height: 1.12;
+                margin: 0 0 0.12rem;
             }
             .latex-resume .contact-line {
-                font-size: 9pt;
-                margin-top: 0.15rem !important;
+                font-size: 9.1pt;
+                margin-top: 0.2rem !important;
             }
             .latex-resume header {
-                margin-bottom: 0.2rem !important;
+                margin-bottom: 0.38rem !important;
             }
+            /* Space before each section (LaTeX-style section breaks) */
             .latex-resume .sec-title {
-                font-size: 9.3pt;
-                margin: 0.22rem 0 0.1rem !important;
-                padding-bottom: 1px !important;
-                letter-spacing: 0.05em;
+                font-size: 9.35pt;
+                margin: 0.52rem 0 0.22rem !important;
+                padding-bottom: 2px !important;
+                letter-spacing: 0.055em;
             }
             .latex-resume .sec-title:first-of-type {
-                margin-top: 0.1rem !important;
+                margin-top: 0 !important;
             }
             .latex-resume .cv-row {
-                margin-top: 0.18rem !important;
-                gap: 0.15rem 0.5rem !important;
+                margin-top: 0.24rem !important;
+                gap: 0.2rem 0.55rem !important;
             }
             .latex-resume .cv-row-tight {
-                margin-top: 0.1rem !important;
+                margin-top: 0.16rem !important;
             }
             .latex-resume .cv-right {
-                font-size: 9pt;
+                font-size: 9.05pt;
             }
             .latex-resume ul.cv-list {
-                margin: 0.08rem 0 0 !important;
-                padding-left: 0.85rem !important;
+                margin: 0.16rem 0 0.1rem !important;
+                padding-left: 0.9rem !important;
             }
             .latex-resume ul.cv-list li {
-                margin: 0 !important;
-                padding-left: 0.08rem !important;
+                margin: 0.09rem 0 !important;
+                padding-left: 0.1rem !important;
             }
+            .latex-resume ul.cv-list.tight li {
+                margin: 0.12rem 0 !important;
+            }
+            /* Breathing room between roles / projects */
             .latex-resume .block-spaced {
-                margin-bottom: 0.22rem !important;
+                margin-bottom: 0.4rem !important;
             }
             .latex-resume .block-spaced-sm {
-                margin-bottom: 0.15rem !important;
+                margin-bottom: 0.3rem !important;
             }
             .latex-resume .pub-body {
-                margin-top: 0.08rem !important;
-                line-height: 1.24;
+                margin-top: 0.14rem !important;
+                margin-bottom: 0.12rem !important;
+                line-height: 1.3;
             }
             .latex-resume strong {
                 font-weight: 600;
