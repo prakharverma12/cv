@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Prakhar Verma — AI/ML research and backend engineering. IIT Kharagpur.">
-    <title>Prakhar Verma | AI Engineer & Backend Developer</title>
+    <meta name="description" content="Prakhar Verma | IIT Kharagpur | AI & Backend Engineer — research, agents, AWS, and full-stack delivery.">
+    <title>Prakhar Verma | IIT Kharagpur | AI & Backend Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+    </script>
     <style>
         /* LaTeX-style résumé (screen + print) — aesthetic tokens */
         .latex-resume {
-            --cv-ink: #141414;
-            --cv-muted: #3a3a3a;
-            --cv-faint: #5c5c5c;
-            --cv-rule: #252525;
+            --cv-ink: #0a0a0a;
+            --cv-muted: #2d2d2d;
+            --cv-faint: #525252;
+            --cv-rule: #1f1f1f;
             font-family: "EB Garamond", "Georgia", "Times New Roman", serif;
             font-size: 11.25px;
             line-height: 1.32;
@@ -120,6 +123,33 @@
             line-height: 1.38;
             color: var(--cv-ink);
         }
+        .latex-resume .resume-tagline {
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--cv-muted);
+            margin: 0.35rem 0 0;
+            line-height: 1.3;
+        }
+        html.dark .latex-resume {
+            --cv-ink: #f5f5f5;
+            --cv-muted: #a8a8a8;
+            --cv-faint: #737373;
+            --cv-rule: #d4d4d4;
+        }
+        @media (max-width: 639px) {
+            .latex-resume {
+                font-size: 15px;
+                line-height: 1.38;
+            }
+            .latex-resume .name {
+                font-size: 1.55rem;
+            }
+            .latex-resume .sec-title {
+                font-size: 0.9rem;
+            }
+        }
 
         @media print {
             .no-print { display: none !important; }
@@ -138,6 +168,12 @@
             }
             main { padding: 0 !important; max-width: none !important; }
             .latex-resume {
+                --cv-ink: #0a0a0a;
+                --cv-muted: #2d2d2d;
+                --cv-faint: #525252;
+                --cv-rule: #1f1f1f;
+                color: #0a0a0a !important;
+                background: #fff !important;
                 font-size: 9.35pt;
                 line-height: 1.2;
                 max-width: none !important;
@@ -223,34 +259,27 @@
         }
     </style>
 </head>
-<body class="bg-stone-100 text-gray-900 font-sans antialiased">
+<body class="bg-stone-100 text-gray-900 font-sans antialiased transition-colors duration-200 dark:bg-stone-950 dark:text-stone-100 min-h-screen">
 
-    <nav class="no-print sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-stone-200 shadow-sm py-3.5">
-        <div class="max-w-[210mm] mx-auto px-5 flex flex-wrap justify-between items-center gap-3">
-            <span class="text-base font-semibold tracking-tight text-stone-800">Prakhar Verma</span>
-            <div class="flex flex-wrap items-center gap-2.5 text-sm text-stone-600">
-                <span class="hidden sm:inline">IIT Kharagpur</span>
-                <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" class="hover:text-stone-900">Email</a>
-                <a href="tel:+918601261056" class="hover:text-stone-900">Phone</a>
-                <button type="button" onclick="window.print()"
-                    class="bg-black text-white px-3.5 py-1.5 rounded-md text-sm font-medium hover:bg-stone-800 transition cursor-pointer">
+    <nav class="no-print sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-stone-200/90 shadow-sm dark:bg-neutral-950/90 dark:border-neutral-800/90">
+        <div class="w-full max-w-[210mm] mx-auto px-4 sm:px-5 min-h-[3rem] flex flex-wrap items-center justify-between gap-2 py-2">
+            <a href="#resume" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-stone-200 bg-stone-50 text-sm font-bold tracking-tight text-stone-900 transition-colors hover:bg-stone-100 hover:border-stone-300 dark:border-neutral-700 dark:bg-neutral-900 dark:text-stone-100 dark:hover:bg-neutral-800" title="Prakhar Verma">PV</a>
+            <div class="flex flex-wrap items-center justify-end gap-1.5 sm:gap-2 text-sm">
+                <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" class="inline-flex min-h-11 items-center rounded-md px-2.5 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white">Email</a>
+                <a href="tel:+918601261056" class="inline-flex min-h-11 items-center rounded-md px-2.5 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white">Phone</a>
+                <button type="button" id="theme-toggle" class="inline-flex h-11 min-w-[2.75rem] items-center justify-center rounded-md border border-stone-300 bg-white px-3 text-sm font-medium text-stone-800 transition-colors hover:bg-stone-50 dark:border-neutral-600 dark:bg-neutral-900 dark:text-stone-200 dark:hover:bg-neutral-800" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
+                <button type="button" onclick="window.print()" class="inline-flex min-h-11 items-center rounded-md bg-black px-4 text-sm font-semibold text-white transition-colors hover:bg-stone-800 dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white">
                     Save as PDF
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-[210mm] mx-auto px-4 sm:px-6 py-8 pb-16">
-        <section class="no-print mb-8 text-stone-600">
-            <h2 class="text-xl font-bold text-stone-900 mb-2">AI Engineer &amp; Backend Developer</h2>
-            <p class="text-sm leading-relaxed max-w-prose">
-                Print: turn off <strong class="text-stone-800">headers and footers</strong>, use <strong class="text-stone-800">minimum margins</strong>, and “Save as PDF.” If one page is tight, try scale 95%.
-            </p>
-        </section>
-
-        <article id="resume" class="latex-resume bg-white mx-auto px-5 sm:px-8 py-7 sm:py-8 border border-stone-200/60 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)] sm:rounded-sm print:shadow-none print:border-0">
+    <main class="w-full max-w-[210mm] mx-auto px-4 sm:px-6 py-6 sm:py-8 pb-14 sm:pb-16">
+        <article id="resume" class="latex-resume w-full max-w-[210mm] mx-auto bg-white px-4 py-6 sm:px-8 sm:py-8 border border-stone-200/70 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)] sm:rounded-sm print:shadow-none print:border-0 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-[0_2px_20px_-8px_rgba(0,0,0,0.5)]">
             <header class="text-center mb-1">
                 <h1 class="name">Prakhar Verma</h1>
+                <p class="resume-tagline print:hidden">IIT Kharagpur · AI &amp; Backend Engineer</p>
                 <p class="contact-line mt-2 print:mt-0">
                     IIT Kharagpur&nbsp;&nbsp;|&nbsp;&nbsp;
                     <a href="mailto:prakharverma@kgpian.iitkgp.ac.in">prakharverma@kgpian.iitkgp.ac.in</a>&nbsp;&nbsp;|&nbsp;&nbsp;
@@ -398,5 +427,32 @@
         </article>
     </main>
 
+    <script>
+        (function () {
+            var key = 'mycv-theme';
+            try {
+                if (localStorage.getItem(key) === 'dark') {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) { /* ignore */ }
+            var btn = document.getElementById('theme-toggle');
+            if (!btn) return;
+            function syncLabel() {
+                var dark = document.documentElement.classList.contains('dark');
+                btn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+                btn.textContent = dark ? '◑' : '◐';
+                btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+            }
+            syncLabel();
+            btn.addEventListener('click', function () {
+                document.documentElement.classList.toggle('dark');
+                var dark = document.documentElement.classList.contains('dark');
+                try {
+                    localStorage.setItem(key, dark ? 'dark' : 'light');
+                } catch (e) { /* ignore */ }
+                syncLabel();
+            });
+        })();
+    </script>
 </body>
 </html>
