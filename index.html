@@ -146,6 +146,9 @@
             --cv-faint: #737373;
             --cv-rule: #d4d4d4;
         }
+        a[data-copy-text] {
+            cursor: pointer;
+        }
         /* Fluid page shell — not “210mm paper” on phones */
         .resume-container {
             width: 100%;
@@ -334,8 +337,8 @@
         <div class="mx-auto flex w-full max-w-[850px] flex-wrap items-center justify-end gap-2 px-2 py-1.5 sm:px-3 sm:py-2 md:justify-between md:px-4">
             <a href="#resume" class="hidden h-10 w-10 shrink-0 items-center justify-center rounded-md border border-stone-200 bg-stone-50 text-sm font-bold tracking-tight text-stone-900 transition-colors hover:bg-stone-100 hover:border-stone-300 dark:border-neutral-700 dark:bg-neutral-900 dark:text-stone-100 dark:hover:bg-neutral-800 md:flex" title="Prakhar Verma">PV</a>
             <div class="flex w-full flex-wrap items-center justify-end gap-1 sm:gap-2 md:w-auto text-xs sm:text-sm">
-                <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" class="inline-flex min-h-9 items-center rounded-md px-2 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black sm:min-h-11 sm:px-2.5 dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white">Email</a>
-                <a href="tel:+918601261056" class="inline-flex min-h-9 items-center rounded-md px-2 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black sm:min-h-11 sm:px-2.5 dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white">Phone</a>
+                <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" data-copy-text="prakharverma@kgpian.iitkgp.ac.in" data-copy-label="Email copied" class="inline-flex min-h-9 items-center rounded-md px-2 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black sm:min-h-11 sm:px-2.5 dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white" title="Click to copy · Ctrl+click to open mail">Email</a>
+                <a href="tel:+918601261056" data-copy-text="+91 8601 261 056" data-copy-label="Phone copied" class="inline-flex min-h-9 items-center rounded-md px-2 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black sm:min-h-11 sm:px-2.5 dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white" title="Click to copy · Ctrl+click to dial">Phone</a>
                 <button type="button" id="theme-toggle" class="inline-flex h-9 min-w-[2.25rem] items-center justify-center rounded-md border border-stone-300 bg-white px-2.5 text-sm font-medium text-stone-800 transition-colors hover:bg-stone-50 sm:h-11 sm:min-w-[2.75rem] sm:px-3 dark:border-neutral-600 dark:bg-neutral-900 dark:text-stone-200 dark:hover:bg-neutral-800" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
                 <button type="button" onclick="window.print()" class="hidden min-h-11 items-center rounded-md bg-black px-4 text-sm font-semibold text-white transition-colors hover:bg-stone-800 md:inline-flex dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white">
                     Save as PDF
@@ -352,9 +355,9 @@
                 <p class="contact-line mt-2 print:mt-0">
                     <span class="contact-brand">IIT Kharagpur</span>
                     <span class="contact-sep" aria-hidden="true">|</span>
-                    <a href="mailto:prakharverma@kgpian.iitkgp.ac.in">prakharverma@kgpian.iitkgp.ac.in</a>
+                    <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" data-copy-text="prakharverma@kgpian.iitkgp.ac.in" data-copy-label="Email copied" title="Click to copy · Ctrl+click to open mail">prakharverma@kgpian.iitkgp.ac.in</a>
                     <span class="contact-sep" aria-hidden="true">|</span>
-                    <a href="tel:+918601261056">+91 8601 261 056</a>
+                    <a href="tel:+918601261056" data-copy-text="+91 8601 261 056" data-copy-label="Phone copied" title="Click to copy · Ctrl+click to dial">+91 8601 261 056</a>
                 </p>
             </header>
 
@@ -498,6 +501,8 @@
         </article>
     </main>
 
+    <div id="copy-toast" class="no-print pointer-events-none fixed bottom-24 left-1/2 z-[45] max-w-[90vw] -translate-x-1/2 translate-y-2 rounded-lg bg-stone-900 px-4 py-2.5 text-center text-sm font-medium text-white opacity-0 shadow-lg transition-all duration-200 dark:bg-stone-100 dark:text-stone-900" role="status" aria-live="polite" aria-atomic="true"></div>
+
     <button type="button" class="no-print md:hidden fixed bottom-4 right-4 z-30 flex h-12 min-w-[3rem] items-center justify-center rounded-full bg-black px-4 text-xs font-bold uppercase tracking-wide text-white shadow-lg ring-1 ring-black/15 transition hover:bg-stone-800 dark:bg-stone-100 dark:text-stone-900 dark:ring-white/20 dark:hover:bg-white" onclick="window.print()" aria-label="Save as PDF">
         PDF
     </button>
@@ -536,6 +541,59 @@
                 var prev = document.documentElement.getAttribute('data-theme-before-print');
                 document.documentElement.removeAttribute('data-theme-before-print');
                 if (prev === 'dark') document.documentElement.classList.add('dark');
+            });
+        })();
+
+        (function () {
+            function copyText(text) {
+                if (navigator.clipboard && window.isSecureContext) {
+                    return navigator.clipboard.writeText(text);
+                }
+                return new Promise(function (resolve, reject) {
+                    var ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.setAttribute('readonly', '');
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    try {
+                        if (document.execCommand('copy')) resolve();
+                        else reject(new Error('execCommand failed'));
+                    } catch (err) {
+                        reject(err);
+                    }
+                    document.body.removeChild(ta);
+                });
+            }
+
+            var toastEl = document.getElementById('copy-toast');
+            var toastTimer;
+            function showToast(message) {
+                if (!toastEl) return;
+                toastEl.textContent = message;
+                toastEl.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
+                toastEl.classList.add('opacity-100', 'translate-y-0');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(function () {
+                    toastEl.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+                    toastEl.classList.remove('opacity-100', 'translate-y-0');
+                }, 2200);
+            }
+
+            document.addEventListener('click', function (e) {
+                var link = e.target.closest('a[data-copy-text]');
+                if (!link) return;
+                if (e.defaultPrevented) return;
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                if (typeof e.button === 'number' && e.button !== 0) return;
+                e.preventDefault();
+                var text = link.getAttribute('data-copy-text');
+                var label = link.getAttribute('data-copy-label') || 'Copied';
+                if (!text) return;
+                copyText(text)
+                    .then(function () { showToast(label); })
+                    .catch(function () { showToast('Could not copy'); });
             });
         })();
     </script>
