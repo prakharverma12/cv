@@ -46,6 +46,14 @@
             font-size: 0.95em;
             font-weight: 500;
             color: var(--cv-muted);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.35rem 0.65rem;
+            text-align: center;
+            max-width: 100%;
+            font-family: ui-sans-serif, system-ui, sans-serif;
         }
         .latex-resume .contact-line a {
             color: inherit;
@@ -138,24 +146,81 @@
             --cv-faint: #737373;
             --cv-rule: #d4d4d4;
         }
+        /* Fluid page shell — not “210mm paper” on phones */
+        .resume-container {
+            width: 100%;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0.65rem 0.5rem 1.25rem;
+            box-sizing: border-box;
+        }
+        @media (min-width: 640px) {
+            .resume-container {
+                padding: 1.25rem 1rem 1.75rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .resume-container {
+                padding: 1.75rem 1.25rem 2rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .resume-container {
+                padding: 2rem 1.5rem 2.25rem;
+            }
+        }
+        .latex-resume .contact-line .contact-sep {
+            color: var(--cv-faint);
+            opacity: 0.85;
+            user-select: none;
+        }
+        .latex-resume .contact-line .contact-brand {
+            font-weight: 700;
+            color: var(--cv-ink);
+        }
+        @media screen and (max-width: 600px) {
+            body {
+                font-size: 16px;
+            }
+            .resume-paper {
+                box-shadow: none !important;
+                border: none !important;
+                border-radius: 0 !important;
+            }
+            .resume-tagline-mobile {
+                font-size: 0.95rem !important;
+                font-weight: 700 !important;
+                letter-spacing: 0.03em !important;
+            }
+        }
         @media (max-width: 639px) {
             .latex-resume {
-                font-size: 15px;
-                line-height: 1.38;
+                font-size: 16px;
+                line-height: 1.4;
             }
             .latex-resume .name {
-                font-size: 1.55rem;
+                font-size: 1.65rem;
             }
             .latex-resume .sec-title {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
         }
 
         @media print {
             .no-print { display: none !important; }
+            html {
+                color-scheme: light !important;
+            }
             html, body {
                 height: auto !important;
                 min-height: 0 !important;
+            }
+            .resume-container {
+                max-width: none !important;
+                width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
             }
             @page {
                 size: A4;
@@ -265,29 +330,31 @@
 </head>
 <body class="bg-stone-100 text-gray-900 font-sans antialiased transition-colors duration-200 dark:bg-stone-950 dark:text-stone-100 min-h-screen">
 
-    <nav class="no-print sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-stone-200/90 shadow-sm dark:bg-neutral-950/90 dark:border-neutral-800/90">
-        <div class="w-full max-w-[210mm] mx-auto px-4 sm:px-5 min-h-[3rem] flex flex-wrap items-center justify-between gap-2 py-2">
-            <a href="#resume" class="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-stone-200 bg-stone-50 text-sm font-bold tracking-tight text-stone-900 transition-colors hover:bg-stone-100 hover:border-stone-300 dark:border-neutral-700 dark:bg-neutral-900 dark:text-stone-100 dark:hover:bg-neutral-800" title="Prakhar Verma">PV</a>
-            <div class="flex flex-wrap items-center justify-end gap-1.5 sm:gap-2 text-sm">
-                <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" class="inline-flex min-h-11 items-center rounded-md px-2.5 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white"> </a>
-                <a href="tel:+918601261056" class="inline-flex min-h-11 items-center rounded-md px-2.5 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white">Dark Mode</a>
-                <button type="button" id="theme-toggle" class="inline-flex h-11 min-w-[2.75rem] items-center justify-center rounded-md border border-stone-300 bg-white px-3 text-sm font-medium text-stone-800 transition-colors hover:bg-stone-50 dark:border-neutral-600 dark:bg-neutral-900 dark:text-stone-200 dark:hover:bg-neutral-800" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
-                <button type="button" onclick="window.print()" class="inline-flex min-h-11 items-center rounded-md bg-black px-4 text-sm font-semibold text-white transition-colors hover:bg-stone-800 dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white">
+    <nav class="no-print relative z-20 border-b border-stone-200/90 bg-white/90 backdrop-blur-md shadow-sm dark:border-neutral-800/90 dark:bg-neutral-950/90 md:sticky md:top-0">
+        <div class="mx-auto flex w-full max-w-[850px] flex-wrap items-center justify-end gap-2 px-2 py-1.5 sm:px-3 sm:py-2 md:justify-between md:px-4">
+            <a href="#resume" class="hidden h-10 w-10 shrink-0 items-center justify-center rounded-md border border-stone-200 bg-stone-50 text-sm font-bold tracking-tight text-stone-900 transition-colors hover:bg-stone-100 hover:border-stone-300 dark:border-neutral-700 dark:bg-neutral-900 dark:text-stone-100 dark:hover:bg-neutral-800 md:flex" title="Prakhar Verma">PV</a>
+            <div class="flex w-full flex-wrap items-center justify-end gap-1 sm:gap-2 md:w-auto text-xs sm:text-sm">
+                <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" class="inline-flex min-h-9 items-center rounded-md px-2 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black sm:min-h-11 sm:px-2.5 dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white">Email</a>
+                <a href="tel:+918601261056" class="inline-flex min-h-9 items-center rounded-md px-2 text-stone-800 transition-colors hover:bg-stone-100 hover:text-black sm:min-h-11 sm:px-2.5 dark:text-stone-300 dark:hover:bg-neutral-800 dark:hover:text-white">Phone</a>
+                <button type="button" id="theme-toggle" class="inline-flex h-9 min-w-[2.25rem] items-center justify-center rounded-md border border-stone-300 bg-white px-2.5 text-sm font-medium text-stone-800 transition-colors hover:bg-stone-50 sm:h-11 sm:min-w-[2.75rem] sm:px-3 dark:border-neutral-600 dark:bg-neutral-900 dark:text-stone-200 dark:hover:bg-neutral-800" aria-label="Toggle dark mode" title="Toggle theme">◐</button>
+                <button type="button" onclick="window.print()" class="hidden min-h-11 items-center rounded-md bg-black px-4 text-sm font-semibold text-white transition-colors hover:bg-stone-800 md:inline-flex dark:bg-stone-100 dark:text-stone-950 dark:hover:bg-white">
                     Save as PDF
                 </button>
             </div>
         </div>
     </nav>
 
-    <main class="w-full max-w-[210mm] mx-auto px-4 sm:px-6 py-6 sm:py-8 pb-14 sm:pb-16">
-        <article id="resume" class="latex-resume w-full max-w-[210mm] mx-auto bg-white px-4 py-6 sm:px-8 sm:py-8 border border-stone-200/70 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)] sm:rounded-sm print:shadow-none print:border-0 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-[0_2px_20px_-8px_rgba(0,0,0,0.5)]">
+    <main class="resume-container pb-24 md:pb-8">
+        <article id="resume" class="latex-resume resume-paper w-full bg-white px-3 py-5 sm:px-6 sm:py-7 md:px-8 md:py-8 border border-stone-200/70 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.07)] sm:rounded-sm print:shadow-none print:border-0 dark:bg-neutral-900 dark:border-neutral-700/80 dark:shadow-[0_2px_20px_-8px_rgba(0,0,0,0.5)]">
             <header class="text-center mb-1">
                 <h1 class="name">Prakhar Verma</h1>
-                <p class="resume-tagline print:hidden">IIT Kharagpur · AI &amp; Backend Engineer</p>
+                <p class="resume-tagline resume-tagline-mobile print:hidden">IIT Kharagpur · AI &amp; Backend Engineer</p>
                 <p class="contact-line mt-2 print:mt-0">
-                    IIT Kharagpur&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href="mailto:prakharverma@kgpian.iitkgp.ac.in">prakharverma@kgpian.iitkgp.ac.in</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    +91 8601 261 056
+                    <span class="contact-brand">IIT Kharagpur</span>
+                    <span class="contact-sep" aria-hidden="true">|</span>
+                    <a href="mailto:prakharverma@kgpian.iitkgp.ac.in">prakharverma@kgpian.iitkgp.ac.in</a>
+                    <span class="contact-sep" aria-hidden="true">|</span>
+                    <a href="tel:+918601261056">+91 8601 261 056</a>
                 </p>
             </header>
 
@@ -431,6 +498,10 @@
         </article>
     </main>
 
+    <button type="button" class="no-print md:hidden fixed bottom-4 right-4 z-30 flex h-12 min-w-[3rem] items-center justify-center rounded-full bg-black px-4 text-xs font-bold uppercase tracking-wide text-white shadow-lg ring-1 ring-black/15 transition hover:bg-stone-800 dark:bg-stone-100 dark:text-stone-900 dark:ring-white/20 dark:hover:bg-white" onclick="window.print()" aria-label="Save as PDF">
+        PDF
+    </button>
+
     <script>
         (function () {
             var key = 'mycv-theme';
@@ -455,6 +526,16 @@
                     localStorage.setItem(key, dark ? 'dark' : 'light');
                 } catch (e) { /* ignore */ }
                 syncLabel();
+            });
+            /* PDF: always light (saves ink + matches print CSS) */
+            window.addEventListener('beforeprint', function () {
+                document.documentElement.setAttribute('data-theme-before-print', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+                document.documentElement.classList.remove('dark');
+            });
+            window.addEventListener('afterprint', function () {
+                var prev = document.documentElement.getAttribute('data-theme-before-print');
+                document.documentElement.removeAttribute('data-theme-before-print');
+                if (prev === 'dark') document.documentElement.classList.add('dark');
             });
         })();
     </script>
