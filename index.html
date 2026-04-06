@@ -165,6 +165,8 @@
                 background: #fff !important;
                 print-color-adjust: exact;
                 -webkit-print-color-adjust: exact;
+                -webkit-font-smoothing: subpixel-antialiased;
+                text-rendering: optimizeLegibility;
             }
             main { padding: 0 !important; max-width: none !important; }
             .latex-resume {
@@ -236,8 +238,10 @@
                 margin-bottom: 0.06rem !important;
                 line-height: 1.26;
             }
-            .latex-resume strong {
+            /* PDF: slightly lighter bold + pure black to reduce digital “ink bleed” */
+            strong, b {
                 font-weight: 600;
+                color: #000;
             }
             .latex-resume a {
                 color: var(--cv-ink) !important;
