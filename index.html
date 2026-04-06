@@ -6,43 +6,192 @@
     <meta name="description" content="Prakhar Verma — AI/ML research and backend engineering. IIT Kharagpur.">
     <title>Prakhar Verma | AI Engineer & Backend Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            @page { margin: 14mm 16mm; size: A4; }
+            body {
+                background: white !important;
+                color: #111 !important;
+                font-size: 10.5pt;
+                line-height: 1.35;
+            }
+            #resume {
+                max-width: none !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+            }
+            #resume a { color: #111 !important; text-decoration: none !important; }
+            .print-break-before { break-before: page; }
+            .avoid-break { break-inside: avoid; }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-gray-50 text-gray-900 font-sans antialiased">
 
-    <nav class="sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm py-4">
-        <div class="max-w-4xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
+    <nav class="no-print sticky top-0 z-10 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm py-4">
+        <div class="max-w-3xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
             <h1 class="text-xl font-bold tracking-tight">Prakhar Verma</h1>
             <div class="flex flex-wrap items-center gap-3 text-sm text-gray-600">
                 <span class="hidden sm:inline">IIT Kharagpur</span>
                 <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" class="hover:text-black transition">Email</a>
                 <a href="tel:+918601261056" class="hover:text-black transition">Phone</a>
-                <a href="./resume.pdf" download
-                   class="bg-black text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition">
-                   Download PDF
-                </a>
+                <button type="button"
+                    onclick="window.print()"
+                    class="bg-black text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-800 transition cursor-pointer">
+                    Save as PDF
+                </button>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 py-12">
-        <section class="mb-12">
-            <h2 class="text-3xl font-extrabold mb-4">AI Engineer & Backend Developer</h2>
+    <main class="max-w-3xl mx-auto px-6 py-10 pb-16">
+        <section class="no-print mb-10">
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-3">AI Engineer & Backend Developer</h2>
             <p class="text-lg text-gray-600 leading-relaxed">
-                Research intern focusing on Transformers and LLMs for NLP and Extreme Multilabel Classification (XMC).
-                I build with <span class="text-black font-semibold">Python, PyTorch, and Hugging Face</span>, and ship
-                backends and tools with <span class="text-black font-semibold">Node.js, Docker, and AWS</span>.
-                Recent work includes an <span class="text-black font-semibold">AI-powered research assistant</span>
-                (Streamlit, OpenAI Agents, Firecrawl, ECS) and a <span class="text-black font-semibold">real-time voice FX assistant</span>
-                in the browser.
+                Research on Transformers and LLMs for NLP and Extreme Multilabel Classification (XMC).
+                I build with Python, PyTorch, and Hugging Face, and ship systems with Node.js, Docker, and AWS.
             </p>
         </section>
 
-        <section class="border-t border-gray-200 pt-8">
-            <h3 class="text-sm uppercase tracking-widest text-gray-400 mb-6">Preview</h3>
-            <div class="w-full min-h-[50vh] h-[800px] max-h-[85vh] bg-gray-200 rounded-lg overflow-hidden shadow-inner">
-                <iframe src="./resume.pdf" title="Resume PDF" class="w-full h-full" frameborder="0"></iframe>
-            </div>
-        </section>
+        <p class="no-print text-xs uppercase tracking-widest text-gray-400 mb-4">Résumé — edit the HTML below; use <strong class="font-medium text-gray-600">Save as PDF</strong> for a file.</p>
+
+        <article id="resume" class="bg-white text-gray-900 rounded-xl shadow-sm border border-gray-100 px-6 sm:px-10 py-8 sm:py-10 print:shadow-none print:border-0 print:rounded-none">
+            <header class="text-center border-b border-gray-200 pb-6 mb-6 avoid-break">
+                <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 font-serif">Prakhar Verma</h1>
+                <p class="mt-2 text-sm text-gray-600">
+                    IIT Kharagpur ·
+                    <a href="mailto:prakharverma@kgpian.iitkgp.ac.in" class="text-gray-700 underline-offset-2 hover:underline">prakharverma@kgpian.iitkgp.ac.in</a>
+                    · +91 86012 61056
+                </p>
+            </header>
+
+            <section class="mb-6 avoid-break">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-gray-200 pb-1 mb-3">Education</h2>
+                <div class="mb-3">
+                    <div class="flex flex-wrap justify-between gap-2 font-semibold text-gray-900">
+                        <span>IIT Kharagpur</span>
+                        <span class="text-gray-600 font-normal text-sm">Nov 2022 – June 2027</span>
+                    </div>
+                    <ul class="mt-1 text-sm text-gray-700 list-disc pl-5 space-y-0.5">
+                        <li>CGPA: 8.63 / 10.0</li>
+                        <li>Coursework: Advanced Machine Learning (CS60073); Data Structures and Algorithms (CS10003, CS19003)</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex flex-wrap justify-between gap-2 font-semibold text-gray-900">
+                        <span>CBSE Class XII, PCM + CS</span>
+                        <span class="text-gray-600 font-normal text-sm">Mar 2022</span>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-700">Grade: 96%</p>
+                </div>
+            </section>
+
+            <section class="mb-6 avoid-break">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-gray-200 pb-1 mb-3">Skills</h2>
+                <ul class="text-sm text-gray-700 space-y-1.5">
+                    <li><span class="font-semibold text-gray-900">Languages:</span> C++, Python, C, JavaScript</li>
+                    <li><span class="font-semibold text-gray-900">Libraries &amp; tools:</span> NumPy, Pandas, scikit-learn, PyTorch, Matplotlib, Git, Linux, Slurm, DGX, MongoDB, Postman, Hugging Face</li>
+                    <li><span class="font-semibold text-gray-900">ML / DL:</span> Regression, classification, clustering, NLP, Transformers (BERT, T5), Extreme Multi-Label Classification (XMC)</li>
+                </ul>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-gray-200 pb-1 mb-3">Experience</h2>
+
+                <div class="mb-4 avoid-break">
+                    <div class="flex flex-wrap justify-between gap-2 font-semibold text-gray-900">
+                        <span>Research Intern — Dept. of Artificial Intelligence, IIT Kharagpur</span>
+                        <span class="text-gray-600 font-normal text-sm">June 2024 – Present</span>
+                    </div>
+                    <ul class="mt-2 text-sm text-gray-700 list-disc pl-5 space-y-1">
+                        <li>Transformer and LLM architectures (BERT, T5) for NLP and XMC.</li>
+                        <li>Boosted tail-label accuracy by 22% (tail label variance reduction); 35% F1 improvement via in-context learning for XMC.</li>
+                        <li>IReRa on ESCO XMC; ~70% faster training with Slurm batch scheduling on DGX.</li>
+                        <li><span class="font-medium text-gray-900">Stack:</span> Python, PyTorch, Hugging Face Transformers, Slurm, DGX, Linux.</li>
+                    </ul>
+                </div>
+
+                <div class="avoid-break">
+                    <div class="flex flex-wrap justify-between gap-2 font-semibold text-gray-900">
+                        <span>IndoML Datathon Intern — IndoML 2023</span>
+                        <span class="text-gray-600 font-normal text-sm">Sept 2024 – Dec 2024</span>
+                    </div>
+                    <ul class="mt-2 text-sm text-gray-700 list-disc pl-5 space-y-1">
+                        <li>Fine-tuned T5 and XMC Transformer models on large-scale e-commerce data; optimized training and inference for high-cardinality labels.</li>
+                        <li>F1 0.96 with baseline T5.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mb-6 print-break-before">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-gray-200 pb-1 mb-3">Projects</h2>
+
+                <div class="mb-4 avoid-break">
+                    <div class="flex flex-wrap justify-between gap-2 font-semibold text-gray-900">
+                        <span>Real-Time Voice FX Assistant</span>
+                        <span class="text-gray-600 font-normal text-sm">June 2025 – July 2025</span>
+                    </div>
+                    <ul class="mt-2 text-sm text-gray-700 list-disc pl-5 space-y-1">
+                        <li>Full-duplex browser voice assistant with real-time speech (Web Audio API, AssemblyAI).</li>
+                        <li>Intent parser mapping natural language to 6+ effects (reverb, delay, pitch-shift, filters) on live audio.</li>
+                        <li><span class="font-medium text-gray-900">Stack:</span> JavaScript, Web Audio API, AssemblyAI, Node.js, HTML, CSS.</li>
+                    </ul>
+                </div>
+
+                <div class="mb-4 avoid-break">
+                    <div class="flex flex-wrap justify-between gap-2 font-semibold text-gray-900">
+                        <span>AI-Powered Research Assistant</span>
+                        <span class="text-gray-600 font-normal text-sm">Mar 2025 – May 2025</span>
+                    </div>
+                    <ul class="mt-2 text-sm text-gray-700 list-disc pl-5 space-y-1">
+                        <li>Deep multi-depth research with Streamlit, OpenAI Agents SDK, and Firecrawl.</li>
+                        <li>Async execution and state; multi-agent flow over large source corpora per session.</li>
+                        <li>Docker on AWS ECS; high availability; up to ~100 concurrent requests per node.</li>
+                        <li><span class="font-medium text-gray-900">Stack:</span> Python, Streamlit, OpenAI Agents SDK, Firecrawl, asyncio, Docker, AWS ECS.</li>
+                    </ul>
+                </div>
+
+                <div class="mb-4 avoid-break">
+                    <div class="flex flex-wrap justify-between gap-2 font-semibold text-gray-900">
+                        <span>Energy Forecasting &amp; Unsupervised Occupancy Detection</span>
+                        <span class="text-gray-600 font-normal text-sm">Feb 2025 – June 2025</span>
+                    </div>
+                    <ul class="mt-2 text-sm text-gray-700 list-disc pl-5 space-y-1">
+                        <li>Hourly energy forecasting with XGBoost, LSTM, and stacked ensembles (best RMSE 0.0594).</li>
+                        <li>Sensor fusion (CO, RH, temperature, lighting); ~45% error reduction vs. linear baseline; energy–IAQ analysis.</li>
+                        <li><span class="font-medium text-gray-900">Stack:</span> Python, scikit-learn, NumPy, Pandas, Matplotlib.</li>
+                    </ul>
+                </div>
+
+                <div class="avoid-break">
+                    <div class="flex flex-wrap justify-between gap-2 font-semibold text-gray-900">
+                        <span>FlickNest — Movie Website Backend</span>
+                        <span class="text-gray-600 font-normal text-sm">Feb 2024 – Apr 2024</span>
+                    </div>
+                    <ul class="mt-2 text-sm text-gray-700 list-disc pl-5 space-y-1">
+                        <li>REST CRUD in Node.js; JWT auth; MongoDB semantic and autocomplete search (~30% faster queries).</li>
+                        <li><span class="font-medium text-gray-900">Stack:</span> JavaScript, Node.js, MongoDB, Postman.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 border-b border-gray-200 pb-1 mb-3">Publications</h2>
+                <ul class="text-sm text-gray-700 space-y-3">
+                    <li class="avoid-break">
+                        <span class="font-semibold text-gray-900">Occupancy Detection and Energy–IAQ Analysis in Office Space: A Comprehensive Study</span>
+                        <span class="text-gray-600"> (May 2025)</span>
+                        <p class="mt-1">57,600 sensor points; K-Means, DBSCAN, XGBoost, LSTM; DCV strategies. ResearchGate.</p>
+                    </li>
+                    <li class="avoid-break">
+                        <span class="font-semibold text-gray-900">A Multi-Level Cluster–Search Approach for XMC</span>
+                        <span class="text-gray-600"> (Nov 2023)</span>
+                        <p class="mt-1">Poster, IndoML Convention 2024. Top 25 / 1000+ (datathon); T5 on large-scale e-commerce labels.</p>
+                    </li>
+                </ul>
+            </section>
+        </article>
     </main>
 
 </body>
