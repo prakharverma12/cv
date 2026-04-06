@@ -123,9 +123,14 @@
 
         @media print {
             .no-print { display: none !important; }
+            html, body {
+                height: auto !important;
+                min-height: 0 !important;
+            }
             @page {
                 size: A4;
-                margin: 9mm 10mm 10mm 10mm;
+                /* Tighter bottom so less empty sheet below last line */
+                margin: 7mm 10mm 4mm 10mm;
             }
             body {
                 background: #fff !important;
@@ -134,16 +139,18 @@
             }
             main { padding: 0 !important; max-width: none !important; }
             .latex-resume {
-                font-size: 9.2pt;
-                line-height: 1.16;
+                /* Slightly larger type + leading fills vertical space without huge footer gap */
+                font-size: 9.55pt;
+                line-height: 1.2;
                 max-width: none !important;
                 padding: 0 !important;
+                margin-bottom: 0 !important;
                 box-shadow: none !important;
                 border: none !important;
                 border-radius: 0 !important;
             }
             .latex-resume .name {
-                font-size: 13.5pt;
+                font-size: 14pt;
                 line-height: 1.1;
                 margin: 0 0 0.1rem;
             }
@@ -189,7 +196,7 @@
             }
             .latex-resume .pub-body {
                 margin-top: 0.08rem !important;
-                line-height: 1.22;
+                line-height: 1.24;
             }
             .latex-resume strong {
                 font-weight: 600;
@@ -197,6 +204,13 @@
             .latex-resume a {
                 color: var(--cv-ink) !important;
                 text-decoration: none !important;
+            }
+            .latex-resume > section:last-child {
+                margin-bottom: 0 !important;
+                padding-bottom: 0 !important;
+            }
+            .latex-resume > section:last-child > ul > li:last-child {
+                margin-bottom: 0 !important;
             }
             /* Let content flow; hard avoids push blocks to page 2 */
             .avoid-break,
