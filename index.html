@@ -100,16 +100,23 @@
         }
         .latex-resume ul.cv-list {
             margin: 0.38rem 0 0.12rem;
-            padding-left: 1.1rem;
-            list-style-type: disc;
         }
-        .latex-resume ul.cv-list li::marker {
-            color: var(--cv-faint);
-            font-size: 0.85em;
+        .latex-resume ul.cv-list:not([style]) {
+            padding-left: 0;
+            list-style: none;
         }
         .latex-resume ul.cv-list li {
             margin: 0.18rem 0;
-            padding-left: 0.25rem;
+        }
+        .latex-resume ul.cv-list:not([style]) > li {
+            position: relative;
+            padding-left: 0.62rem;
+        }
+        .latex-resume ul.cv-list:not([style]) > li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--cv-faint);
         }
         .latex-resume ul.cv-list.tight li { margin: 0.12rem 0; }
         .latex-resume .lbl { font-weight: 700; }
@@ -227,7 +234,7 @@
             }
             @page {
                 size: A4;
-                margin: 9mm 10mm 9mm 10mm;
+                margin: 9mm 7mm 9mm 7mm;
             }
             body {
                 background: #fff !important;
@@ -244,8 +251,8 @@
                 --cv-rule: #1f1f1f;
                 color: #0a0a0a !important;
                 background: #fff !important;
-                font-size: 9.35pt;
-                line-height: 1.2;
+                font-size: 9pt;
+                line-height: 1.3;
                 max-width: none !important;
                 padding: 0 !important;
                 margin-bottom: 0 !important;
@@ -263,48 +270,46 @@
                 margin-top: 0.16rem !important;
             }
             .latex-resume header {
-                margin-bottom: 0.3rem !important;
+                margin-bottom: 0.5rem !important;
             }
             .latex-resume .sec-title {
                 font-size: 9.15pt;
-                margin: 0.4rem 0 0.16rem !important;
-                padding-bottom: 2px !important;
+                margin: 0.7rem 0 0.38rem !important;
+                padding-bottom: 3px !important;
                 letter-spacing: 0.052em;
             }
             .latex-resume .sec-title:first-of-type {
                 margin-top: 0 !important;
             }
             .latex-resume .cv-row {
-                margin-top: 0.18rem !important;
-                gap: 0.16rem 0.5rem !important;
+                margin-top: 0.36rem !important;
+                gap: 0.3rem 0.8rem !important;
             }
             .latex-resume .cv-row-tight {
-                margin-top: 0.12rem !important;
+                margin-top: 0.22rem !important;
             }
             .latex-resume .cv-right {
                 font-size: 9pt;
             }
             .latex-resume ul.cv-list {
-                margin: 0.12rem 0 0.06rem !important;
-                padding-left: 0.88rem !important;
+                margin: 0.3rem 0 0.1rem !important;
             }
             .latex-resume ul.cv-list li {
-                margin: 0.065rem 0 !important;
-                padding-left: 0.1rem !important;
+                margin: 0.15rem 0 !important;
             }
             .latex-resume ul.cv-list.tight li {
-                margin: 0.09rem 0 !important;
+                margin: 0.15rem 0 !important;
             }
             .latex-resume .block-spaced {
-                margin-bottom: 0.34rem !important;
+                margin-bottom: 0.5rem !important;
             }
             .latex-resume .block-spaced-sm {
-                margin-bottom: 0.24rem !important;
+                margin-bottom: 0.38rem !important;
             }
             .latex-resume .pub-body {
-                margin-top: 0.12rem !important;
-                margin-bottom: 0.06rem !important;
-                line-height: 1.26;
+                margin-top: 0.24rem !important;
+                margin-bottom: 0.1rem !important;
+                line-height: 1.3;
             }
             /* PDF: slightly lighter bold + pure black to reduce digital “ink bleed” */
             strong, b {
@@ -365,29 +370,20 @@
                 <h2 class="sec-title">Education</h2>
                 <div class="block-spaced-sm">
                     <div class="cv-row cv-row-tight">
-                        <span class="cv-left font-bold">IIT Kharagpur</span>
+                        <ul><span class="cv-left font-bold">IIT Kharagpur,</span> B.Arch (5 year)</ul>
                         <span class="cv-right">Nov 2022 – June 2027</span>
                     </div>
                     <ul class="cv-list tight">
                         <li><span class="lbl">CGPA:</span> 8.63/10.0</li>
-                        <li><span class="lbl">Coursework:</span> Advanced Machine Learning (CS60073), Data structures and Algorithms (CS10003 and CS19003)</li>
+                        <li><span class="lbl">Coursework:</span> <strong>Advanced Machine Learning</strong> (CS60073), <strong>Data Structures and Algorithms</strong> (CS10003 and CS19003)</li>
                     </ul>
                 </div>
                 <div class="block-spaced">
                     <div class="cv-row cv-row-tight">
-                        <span class="cv-left font-bold">CBSE Class XII, PCM + CS (Grade: 96%)</span>
+                        <ul><span class="cv-left font-bold">CBSE Class XII, </span>PCM + CS (Grade: <strong>96%</strong>)</ul>
                         <span class="cv-right">Mar 2022</span>
                     </div>
                 </div>
-            </section>
-
-            <section>
-                <h2 class="sec-title">Skills</h2>
-                <ul class="cv-list tight" style="list-style: none; padding-left: 0;">
-                    <li><span class="lbl">Languages:</span> C++, Python, C, and Javascript</li>
-                    <li><span class="lbl">Libraries and Tools:</span> Numpy, Pandas, SkLearn, Pytorch, Matplotlib, Git, Linux, Slurm scripts, DGX, MongoDB, Postman, and Huggingface</li>
-                    <li><span class="lbl">ML/DL:</span> Regression, Classification, Clustering, NLP, Transformer Models (BERT, T5), Extreme MultiLabel Classification</li>
-                </ul>
             </section>
 
             <section>
@@ -401,11 +397,11 @@
                         <span class="cv-right">Jan 2026 – July 2026</span>
                     </div>
                     <ul class="cv-list">
-                        <li>Eliminated <strong>100%</strong> of <strong>PII</strong> leakage in production <strong>LLM</strong> paths by architecting a tiered <strong>NLU</strong> system with guardrail-aware prompting; ensured strict <strong>DPDP</strong> compliance for <strong>5,000+</strong> sensitive patient records.</li>
-                        <li>Reduced patient response latency by <strong>65%</strong> (from ~8s to <strong>&lt;3s</strong>) by implementing intent routing via <strong>Amazon Bedrock</strong> and <strong>Sarvam</strong> LLMs, streamlining automated <strong>WhatsApp</strong> flows for high-frequency medical outreach.</li>
-                        <li>Scaled backend throughput to <strong>500+</strong> concurrent events/sec by engineering asynchronous workflows with <strong>AWS EventBridge</strong> and <strong>SQS</strong>, decoupling <strong>12+</strong> microservices to prevent system bottlenecks during peak traffic.</li>
-                        <li>Achieved <strong>99.9%</strong> data durability for health-tracking modules by optimizing <strong>PostgreSQL/RDS</strong> indexing and <strong>DynamoDB TTL</strong> strategies, supporting real-time sync for <strong>1,000+</strong> daily prescription updates.</li>
-                        <li><span class="lbl">Tech Stack:</span> Node.js, Amazon Bedrock, Sarvam LLM APIs, AWS (Lambda, EventBridge, SQS, SNS, S3), PostgreSQL/RDS, DynamoDB, React (Vite), CloudFormation.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Eliminated <strong>100%</strong> of <strong>PII</strong> leakage <strong>LLM</strong> paths by architecting a tiered <strong>NLU</strong> system with guardrail-aware prompting ensuring strict <strong>DPDP</strong> compliance.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Optimized a scheduler Lambda from <strong>~880s</strong> (near its <strong>900s</strong> timeout) by decoupling into a producer/consumer queue drained via <strong>SKIP LOCKED</strong> batches.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Shipped <strong>multimodal</strong> patient intake — wound-photo AI triage, audio-prescription transcription, and prescription <strong>OCR</strong> via <strong>Sarvam</strong> API and Bedrock.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Reduced patient response latency by <strong>65%</strong> (from ~8s to <strong>&lt;3s</strong>) via <strong>Amazon Bedrock</strong> and <strong>Sarvam</strong> LLMs intent routing for <strong>WhatsApp</strong> workflows.</li>
+                        <li style="text-align: justify; text-align-last: justify;"><span class="lbl">Tech Stack:</span> Java, Amazon Bedrock, Sarvam LLM APIs, AWS (Lambda, EventBridge, SQS, S3), PostgreSQL, DynamoDB, React (Vite), AppConfig</li>
                     </ul>
                 </div>
 
@@ -417,10 +413,9 @@
                         <span class="cv-right">Dec 2025 – Jan 2026</span>
                     </div>
                     <ul class="cv-list">
-                        <li>Reduced trip-planning latency by <strong>40%</strong> by architecting production-grade <strong>FastAPI</strong> <strong>itinerary_agent</strong> on <strong>Railway</strong>, replacing legacy synchronous flows with session-scoped, multi-turn chat capabilities.</li>
-                        <li>Boosted itinerary accuracy by <strong>35%</strong> (measured via internal evaluation) by orchestrating a multi-agent system (<strong>Root</strong>, <strong>Inspiration</strong>, <strong>Itinerary</strong>) using <strong>Gemini 2.0 Flash</strong> and <strong>Google Search</strong> grounding.</li>
-                        <li>Automated <strong>100%</strong> of real-time data retrieval for news and places by engineering sub-agents for <strong>Google Places API</strong>, eliminating manual drafting and providing critique-backed, personalized travel plans.</li>
-                        <li>Accelerated frontend integration by <strong>2x</strong> through standardized <strong>Uvicorn</strong> <strong>ASGI</strong> packaging and auto-generated <strong>OpenAPI</strong> documentation, enabling seamless handoffs to the UI team.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Reduced trip-planning latency <strong>40%</strong> by architecting a <strong>multi-agent</strong> system on <strong>Railway</strong>, replacing legacy workflows with session-scoped, multi-turn chat.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Boosted itinerary accuracy <strong>35%</strong> by orchestrating a <strong>Gemini 2.0 Flash</strong> multi-agent system (<strong>Root</strong>, <strong>Inspiration</strong>, <strong>Itinerary</strong>) with <strong>Google Search</strong> grounding.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Automated <strong>100%</strong> of real-time news and location data retrieval by engineering sub-agents for <strong>Google Places API</strong>, driving personalized travel generation.</li>
                         <li><span class="lbl">Tech Stack:</span> Python, FastAPI, Google ADK, Gemini 2.0 Flash, Google Places API, Google Search grounding, Uvicorn, Railway, OpenAPI.</li>
                     </ul>
                 </div>
@@ -433,9 +428,9 @@
                         <span class="cv-right">June 2024 – June 2025</span>
                     </div>
                     <ul class="cv-list">
-                        <li>Raised <strong>tail-label accuracy by 22%</strong> on long-tail XMC labels by engineering <strong>BERT/T5</strong> pipelines with <strong>tail-label variance reduction</strong> in <strong>PyTorch</strong> on the <strong>ESCO</strong> dataset.</li>
-                        <li>Increased <strong>F1 by 35%</strong> on XMC by deploying <strong>in-context learning</strong> and the <strong>IReRa</strong> framework, with reproducible train/eval on <strong>DGX</strong>.</li>
-                        <li>Cut <strong>end-to-end training time by 70%</strong> by orchestrating batched <strong>SLURM</strong> workloads across <strong>DGX</strong> for large-scale transformer experiments.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Boosted <strong>tail-label accuracy 22%</strong> on long-tail XMC datasets by engineering <strong>BERT/T5</strong> pipelines with tail-label variance reduction in <strong>PyTorch</strong> via <strong>ESCO</strong>.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Increased <strong>XMC F1-score 35%</strong> via <strong>in-context learning</strong> and the <strong>IReRa</strong> framework, orchestrating reproducible train/eval pipelines on <strong>DGX H100</strong> nodes.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Reduced <strong>end-to-end training time 70%</strong> by orchestrating batched <strong>SLURM script</strong> workloads across <strong>DGX</strong> nodes for large-scale transformer experiments.</li>
                         <li><span class="lbl">Tech Stack:</span> Python, PyTorch, Hugging Face Transformers, SLURM, DGX, Linux.</li>
                     </ul>
                 </div>
@@ -446,46 +441,32 @@
 
                 <div class="block-spaced">
                     <div class="cv-row cv-row-tight">
-                        <span class="cv-left font-bold">Real-Time Voice FX Assistant</span>
-                        <span class="cv-right">June 2025 – July 2025</span>
+                        <span class="cv-left font-bold">Care360 Agentic — Patient Adherence & Risk Orchestration</span>
+                        <span class="cv-right">Mar 2026 – May 2026</span>
                     </div>
                     <ul class="cv-list">
-                        <li>Delivered <strong>full-duplex</strong>, browser-based <strong>real-time speech</strong> by wiring <strong>Web Audio API</strong> capture/playback to <strong>AssemblyAI</strong> streaming transcripts.</li>
-                        <li>Mapped free-form voice commands to <strong>6+ live audio effects</strong> (reverb, delay, pitch-shift, filters) via a custom intent parser over uploaded and live audio.</li>
-                        <li><span class="lbl">Tech Stack:</span> JavaScript, Web Audio API, AssemblyAI, Node.js, HTML, CSS.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Architected <strong>Bedrock agentic orchestrator</strong> routing patient <strong>state vectors</strong> across <strong>7 tool agents</strong> into <strong>4 risk tiers</strong> to optimize clinician queues.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Slashed LLM token costs by <strong>95%</strong> by engineering a conditional fast-path routing pipeline that bypasses expensive multi-agent loops for low-risk profiles.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Built an offline <strong>evaluation harness</strong> using precision/recall/F1 metrics to benchmark agentic flags against counsellor labels, reducing false-positives by <strong>40%</strong>.</li>
+                        <li style="text-align: justify; text-align-last: justify;"><span class="lbl">Tech Stack:</span> Java, Amazon Bedrock, Sarvam LLM APIs, AWS (Lambda, EventBridge, SQS, S3), PostgreSQL, DynamoDB, React (Vite), AppConfig</li>
                     </ul>
                 </div>
-
                 <div class="block-spaced">
                     <div class="cv-row cv-row-tight">
-                        <span class="cv-left font-bold">AI-Powered Research Assistant</span>
-                        <span class="cv-right">March 2025 – May 2025</span>
+                        <span class="cv-left font-bold">InterLume — a fully client-side AI slow-motion generator </span>
+                        <span class="cv-right">Apr 2026 – Jun 2026</span>
                     </div>
                     <ul class="cv-list">
-                        <li>Cut researcher time per query by <strong>~90%</strong> by orchestrating a <strong>multi-agent</strong> <strong>Streamlit</strong> app with <strong>OpenAI Agents SDK</strong> + <strong>Firecrawl</strong> over <strong>100,000+ words</strong> of crawled context per session.</li>
-                        <li>Scaled interactive sessions to <strong>5–10 concurrent</strong> low-latency runs using <strong>asyncio</strong> state and queueing in Python.</li>
-                        <li>Deployed with <strong>Docker</strong> on <strong>AWS ECS</strong> targeting <strong>99.9%</strong> availability and up to <strong>100 concurrent requests</strong> per node.</li>
-                        <li><span class="lbl">Tech Stack:</span> Python, Streamlit, OpenAI Agents SDK, Firecrawl, asyncio, Docker, AWS ECS.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Built a fully in-browser AI slow-motion generator that synthesizes frames with the <strong>RIFE</strong> optical-flow model on <strong>WebGPU</strong> without uploads or server.</li>
+                    <li style="text-align: justify; text-align-last: justify;">Engineered an on-device <strong>WebCodecs</strong> decode-inference-encode pipeline with a bounded queue (<strong>&le;8 frames</strong>) to optimize throughput and memory usage.</li>
+                        <li style="text-align: justify; text-align-last: justify;">Built GPU-tier detection that auto-selects <strong>INT8/FP16</strong> RIFE models and batch sizes <strong>1–8</strong>, scaling from mobile to high-end discrete GPUs.</li>
+                        <li><span class="lbl">Tech Stack:</span> React 19, Vite, onnxruntime-web (WebGPU), WebCodecs, WebGL2, mp4box, mp4-muxer.</li>
                     </ul>
                 </div>
-
-                <div class="block-spaced">
-                    <div class="cv-row cv-row-tight">
-                        <span class="cv-left font-bold">Energy Usage Forecasting and Unsupervised Occupancy Detection Using Clustering</span>
-                        <span class="cv-right">Feb 2025 – June 2025</span>
-                    </div>
-                    <ul class="cv-list">
-                        <li>Achieved best hourly forecast RMSE <strong>0.0594</strong> by stacking <strong>XGBoost</strong>, <strong>LSTM</strong>, and ensemble models on office energy time series.</li>
-                        <li>Slashed forecast error by <strong>45%</strong> vs. linear baselines by fusing CO, RH, temperature, and lighting-load sensors into the pipeline.</li>
-                        <li>Quantified drivers of daily energy use: <strong>63–69%</strong> of variability attributed to plug load and <strong>HVAC</strong> via energy–IAQ analysis.</li>
-                        <li><span class="lbl">Tech Stack:</span> Python, scikit-learn, NumPy, Pandas, Matplotlib.</li>
-                    </ul>
-                </div>
-
             </section>
 
             <section>
-                <h2 class="sec-title">Publications</h2>
+                <h2 class="sec-title">Research Project</h2>
                 <ul class="cv-list" style="list-style: none; padding-left: 0;">
                     <li>
                         <div class="cv-row cv-row-tight">
@@ -498,6 +479,42 @@
                     </li>
                 </ul>
             </section>
+            <section>
+                <h2 class="sec-title">Honors & Achievements</h2>
+                <ul class="cv-list" style="list-style: none; padding-left: 0;">
+                    <li>
+                        <div class="cv-row cv-row-tight">
+                            <span class="cv-left pub-title">Professional Selection (KPMG)</span>
+                            <span class="cv-right">June 2026</span>
+                        </div>
+                        <p class="pub-body" style="text-align: justify; text-align-last: justify;">
+                            Secured a highly competitive <strong>off-campus</strong>, on-site Internship offer to optimize <em>AI pipelines for Mergers &amp; Acquisitions</em> within the Corporate Finance Team at <strong>KPMG India (Gurugram)</strong>, placing in the <strong>top 10%</strong> of applicants nationwide through multiple technical and non technical interview panels.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="cv-row cv-row-tight">
+                            <span class="cv-left pub-title">Academics</span>
+                            <span class="cv-right">June 2026</span>
+                        </div>
+                        <ul class="pub-body">
+                            <li style="text-align: justify; text-align-last: justify;">Departmental<strong> Rank 1</strong> out of all students in the Department of Architecture and Regional Planning of academic batch 2027 at <strong>IIT Kharagpur</strong>.</li>
+                            <li style="text-align: justify; text-align-last: justify;">Cleared the <strong>JEE Advanced</strong> and <strong>Architecture Aptitude Test (AAT)</strong> pipeline; secured merit-based selection into the elite 30-seat cohort at <strong>IIT Kharagpur</strong>.</li>
+                            <li>Achieved <strong>Top 30 State Rank</strong> in the state of Uttar Pradesh in the 2018 <strong>Regional Mathematical Olympiad (RMO)</strong>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="sec-title">Skills</h2>
+                <ul class="cv-list tight" style="list-style: none; padding-left: 0;">
+                    <li><span class="lbl">Languages:</span> C++, Python, Java, C, and Javascript</li>
+                    <li><span class="lbl">Frameworks &amp; Libraries:</span> PyTorch, HuggingFace, NumPy, Pandas, Scikit-Learn, Matplotlib</li>
+                    <li><span class="lbl">Cloud &amp; Dev Tools:</span> AWS (Lambda, EventBridge, SQS, S3, AppConfig, Secret Manager), Git, Linux, Slurm, Postman, DGX</li>
+                    <li><span class="lbl">Databases &amp; ML/DL:</span> Aurora, RDS, DynamoDB, MongoDB | Regression, Clustering, NLP, XMC (BERT, T5)</li>
+                </ul>
+            </section>
+
         </article>
     </main>
 
