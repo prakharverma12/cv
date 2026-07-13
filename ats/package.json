@@ -1,0 +1,13 @@
+{
+  "name": "mycv-ats",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local ATS / resume scorer for index.html — parse-fidelity + per-role JD match via Claude.",
+  "scripts": {
+    "score": "node score.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0"
+  }
+}

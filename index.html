@@ -46,14 +46,15 @@
             font-size: 0.95em;
             font-weight: 500;
             color: var(--cv-muted);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 0.35rem 0.65rem;
+            /* Inline flow (not flex) so the contact line extracts as ONE
+               contiguous left-to-right run in the PDF/ATS text layer. */
+            display: block;
             text-align: center;
             max-width: 100%;
             font-family: ui-sans-serif, system-ui, sans-serif;
+        }
+        .latex-resume .contact-line > * {
+            white-space: nowrap;
         }
         .latex-resume .contact-line a {
             color: inherit;
@@ -78,15 +79,29 @@
         .latex-resume .cv-row {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
             align-items: baseline;
-            gap: 0.35rem 1rem;
+            gap: 0.35rem 0;
             margin-top: 0.45rem;
         }
         .latex-resume .cv-row-tight { margin-top: 0.25rem; }
         .latex-resume .cv-left {
-            flex: 1 1 14rem;
+            flex: 0 1 auto;
             min-width: 0;
+        }
+        /* Invisible space-bridge: fills the title→date gap with transparent
+           space glyphs so PDF/ATS text extraction reads the row as ONE line
+           (Title …    Date) instead of sorting the right-flush date into a
+           separate positional band. Copyable spaces only — no visible marks. */
+        .latex-resume .cv-bridge {
+            flex: 1 1 0;
+            min-width: 1.5rem;
+            overflow: hidden;
+            white-space: nowrap;
+            color: transparent;
+            -webkit-user-select: text;
+            user-select: text;
+            pointer-events: none;
+            font-variant-numeric: tabular-nums;
         }
         .latex-resume .cv-right {
             flex: 0 0 auto;
@@ -183,7 +198,7 @@
         .latex-resume .contact-line .contact-sep {
             color: var(--cv-faint);
             opacity: 0.85;
-            user-select: none;
+            margin: 0 0.4rem;
         }
         .latex-resume .contact-line .contact-brand {
             font-weight: 700;
@@ -283,7 +298,7 @@
             }
             .latex-resume .cv-row {
                 margin-top: 0.36rem !important;
-                gap: 0.3rem 0.8rem !important;
+                gap: 0.3rem 0 !important;
             }
             .latex-resume .cv-row-tight {
                 margin-top: 0.22rem !important;
@@ -370,7 +385,8 @@
                 <h2 class="sec-title">Education</h2>
                 <div class="block-spaced-sm">
                     <div class="cv-row cv-row-tight">
-                        <ul><span class="cv-left font-bold">IIT Kharagpur,</span> B.Arch (5 year)</ul>
+                        <div class="cv-left"><span class="font-bold">IIT Kharagpur,</span> B.Arch (5 year)</div>
+                        <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                         <span class="cv-right">Nov 2022 – June 2027</span>
                     </div>
                     <ul class="cv-list tight">
@@ -380,7 +396,8 @@
                 </div>
                 <div class="block-spaced">
                     <div class="cv-row cv-row-tight">
-                        <ul><span class="cv-left font-bold">CBSE Class XII, </span>PCM + CS (Grade: <strong>96%</strong>)</ul>
+                        <div class="cv-left"><span class="font-bold">CBSE Class XII, </span>PCM + CS (Grade: <strong>96%</strong>)</div>
+                        <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                         <span class="cv-right">Mar 2022</span>
                     </div>
                 </div>
@@ -394,6 +411,7 @@
                         <div class="cv-left">
                             <span class="font-bold">AI Engineering Intern,</span> <i class="org">Care360 — Sulegn, Switzerland</i>
                         </div>
+                        <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                         <span class="cv-right">Jan 2026 – July 2026</span>
                     </div>
                     <ul class="cv-list">
@@ -410,6 +428,7 @@
                         <div class="cv-left">
                             <span class="font-bold">AI Engineering Intern,</span> <i class="org">Zelleva — Prashanti Paths</i>
                         </div>
+                        <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                         <span class="cv-right">Dec 2025 – Jan 2026</span>
                     </div>
                     <ul class="cv-list">
@@ -425,6 +444,7 @@
                         <div class="cv-left">
                             <span class="font-bold">Research Intern,</span> <i class="org">Department of Artificial Intelligence, IIT KGP</i>
                         </div>
+                        <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                         <span class="cv-right">June 2024 – June 2025</span>
                     </div>
                     <ul class="cv-list">
@@ -442,6 +462,7 @@
                 <div class="block-spaced">
                     <div class="cv-row cv-row-tight">
                         <span class="cv-left font-bold">Care360 Agentic — Patient Adherence & Risk Orchestration</span>
+                        <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                         <span class="cv-right">Mar 2026 – May 2026</span>
                     </div>
                     <ul class="cv-list">
@@ -454,6 +475,7 @@
                 <div class="block-spaced">
                     <div class="cv-row cv-row-tight">
                         <span class="cv-left font-bold">InterLume — a fully client-side AI slow-motion generator </span>
+                        <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                         <span class="cv-right">Apr 2026 – Jun 2026</span>
                     </div>
                     <ul class="cv-list">
@@ -471,6 +493,7 @@
                     <li>
                         <div class="cv-row cv-row-tight">
                             <span class="cv-left pub-title">A Multi-Level Cluster-Search Approach for XMC</span>
+                            <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                             <span class="cv-right">Nov 2023</span>
                         </div>
                         <p class="pub-body">
@@ -485,6 +508,7 @@
                     <li>
                         <div class="cv-row cv-row-tight">
                             <span class="cv-left pub-title">Professional Selection (KPMG)</span>
+                            <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                             <span class="cv-right">June 2026</span>
                         </div>
                         <p class="pub-body" style="text-align: justify; text-align-last: justify;">
@@ -494,6 +518,7 @@
                     <li>
                         <div class="cv-row cv-row-tight">
                             <span class="cv-left pub-title">Academics</span>
+                            <span class="cv-bridge" aria-hidden="true">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
                             <span class="cv-right">June 2026</span>
                         </div>
                         <ul class="pub-body">
